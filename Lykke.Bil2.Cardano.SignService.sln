@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Tests", "1. Tests", "{D536FE63-EA4C-4C8C-A941-6FCFC2A5791B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lykke.Bil2.Cardano.SignService.Tests", "tests\Lykke.Bil2.Cardano.SignService.Tests\Lykke.Bil2.Cardano.SignService.Tests.csproj", "{DA614660-F406-418F-AE02-567DE619DD9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lykke.Bil2.Cardano.SignService", "src\Lykke.Bil2.Cardano.SignService\Lykke.Bil2.Cardano.SignService.csproj", "{C434085E-537C-4EEF-8DD8-E23C6AAF0575}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{75A75DAA-341A-4A90-9B2E-935C56FDE75C}"
+	ProjectSection(SolutionItems) = preProject
+		IMPLEMENTATION.md = IMPLEMENTATION.md
+		README.md = README.md
+		settings.yaml = settings.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C434085E-537C-4EEF-8DD8-E23C6AAF0575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C434085E-537C-4EEF-8DD8-E23C6AAF0575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C434085E-537C-4EEF-8DD8-E23C6AAF0575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C434085E-537C-4EEF-8DD8-E23C6AAF0575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA614660-F406-418F-AE02-567DE619DD9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA614660-F406-418F-AE02-567DE619DD9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA614660-F406-418F-AE02-567DE619DD9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA614660-F406-418F-AE02-567DE619DD9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DA614660-F406-418F-AE02-567DE619DD9D} = {D536FE63-EA4C-4C8C-A941-6FCFC2A5791B}
+	EndGlobalSection
+EndGlobal

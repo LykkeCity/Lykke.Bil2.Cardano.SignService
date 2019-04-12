@@ -1,0 +1,13 @@
+# Common settings
+
+MonitoringServiceClient:
+    MonitoringServiceUrl:
+        settings-key: MonitoringServiceUrl
+
+# Sign service settings
+
+EncryptionPrivateKey:
+    settings-key: Cardano-SignService-EncryptionPrivateKey
+
+Network:
+    settings-key: Cardano-Network

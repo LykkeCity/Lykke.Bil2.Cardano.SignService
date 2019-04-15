@@ -37,21 +37,36 @@ namespace Lykke.Bil2.Cardano.SignService.Services
             xprv[31] |= 64;
             xprv[31] &= 0b1101_1111;
 
-            var xprv_ptr = IntPtr.Zero; // XPRV pointer for P/Invoke
+            // pointers to the objects placed in unmanged memory
+            var xprv_ptr = default(IntPtr); // XPRV
+            var xpub_ptr = default(IntPtr); // XPUB (eXtended PUBlic key)
+            var addr_ptr = default(IntPtr); // address
+            var addr = string.Empty; // base58 address representation
 
-            if (Cardano.cardano_xprv_from_bytes(xprv, ref xprv_ptr) != Cardano.cardano_result.CARDANO_RESULT_SUCCESS)
+            try
             {
-                throw new InvalidOperationException("XPRV generation failed");
+                if (Cardano.cardano_xprv_from_bytes(xprv, ref xprv_ptr) != Cardano.cardano_result.CARDANO_RESULT_SUCCESS)
+                {
+                    throw new BlockchainIntegrationException("XPRV generation failed");
+                }
+
+                xpub_ptr = Cardano.cardano_xprv_to_xpub(xprv_ptr);
+                addr_ptr = Cardano.cardano_address_new_from_pubkey(xpub_ptr, _protocolMagic);
+                addr = Cardano.cardano_address_export_base58(addr_ptr);
             }
+            finally
+            {
+                // unmanaged memory cleanup
+                
+                if (xprv_ptr != default(IntPtr))
+                    Cardano.cardano_xprv_delete(xprv_ptr);
 
-            var xpub_ptr = Cardano.cardano_xprv_to_xpub(xprv_ptr); // eXtended PUBlic key
-            var addr_ptr = Cardano.cardano_address_new_from_pubkey(xpub_ptr, _protocolMagic); // address bytes
-            var addr = Cardano.cardano_address_export_base58(addr_ptr); // address base58 representation
+                if (xpub_ptr != default(IntPtr))
+                    Cardano.cardano_xpub_delete(xpub_ptr);
 
-            // unmanaged memory cleanup
-            Cardano.cardano_xprv_delete(xprv_ptr);
-            Cardano.cardano_xpub_delete(xpub_ptr);
-            Cardano.cardano_address_delete(addr_ptr);
+                if (addr_ptr != default(IntPtr))
+                    Cardano.cardano_address_delete(addr_ptr);
+            }
 
             return Task.FromResult
             (

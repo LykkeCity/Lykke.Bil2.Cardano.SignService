@@ -23,12 +23,10 @@
 	  <None Update="Dockerfile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="libcardano_c.*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lykke.Bil2.Sdk.SignService" Version="1.0.0-beta.13" />
+    <PackageReference Include="Lykke.Bil2.Cardano" Version="1.0.0-beta.7" />
+    <PackageReference Include="Lykke.Bil2.Sdk.SignService" Version="1.0.0-beta.17" />
   </ItemGroup>
 </Project>

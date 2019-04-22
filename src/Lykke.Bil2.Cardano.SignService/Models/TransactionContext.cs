@@ -10,6 +10,7 @@ namespace Lykke.Bil2.Cardano.SignService.Models
 
     public class Input
     {
+        public string Address { get; set; }
         public string TxId { get; set; }
         public uint Index { get; set; }
         public ulong Amount { get; set; }

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System;
 using JetBrains.Annotations;
 using Lykke.Bil2.Cardano.SignService.Services;
@@ -23,10 +24,7 @@ namespace Lykke.Bil2.Cardano.SignService
                 // Register required service implementations:
 
                 options.TransactionSignerFactory = ctx =>
-                    new TransactionSigner
-                    (
-                        /* TODO: Provide specific settings and dependencies, if necessary */
-                    );
+                    new TransactionSigner(ctx.Settings.CurrentValue.Network);
 
                 options.AddressGeneratorFactory = ctx =>
                     new AddressGenerator(ctx.Settings.CurrentValue.Network);
